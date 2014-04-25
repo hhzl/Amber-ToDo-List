@@ -61,3 +61,20 @@ The following changes were done to upgrade it to Amber version 0.12.4
    this option yet.
 5. In method `ToDoStorage>>getArray` change `smalltalk readJSON:` to `SmalltalkImage current readJSObject:`.
 6. In method `ToDoStorage>>save` change `asJSON` to `asJSONString`.
+
+
+Note
+----
+
+The ToDo list items are stored in the `localStorage` of your browser. When you reload the ToDo List web page they will be reloaded. 
+
+To check manually what is stored execute 
+
+    localStorage getItem: 'TodoList' 
+    
+in an Amber workspace.    
+
+To completely remove what is there execute
+
+   localStorage removeItem: 'TodoList'
+    
