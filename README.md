@@ -76,5 +76,5 @@ in an Amber workspace.
 
 To completely remove what is there execute
 
-   localStorage removeItem: 'TodoList'
+    localStorage removeItem: 'TodoList'
     
