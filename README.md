@@ -25,11 +25,11 @@ The tools
 Instructions
 ------------
 
-- Download and upzip or fork and clone this repository.
-- Open the directory where `index.html` and `README.md` are located.
-- Open a terminal window and execute `bower install`
-- Then execute `amber serve`
-
+1. Download and upzip or fork and clone this repository.
+2. Open the directory where `index.html` and `README.md` are located.
+3. Open a terminal window and execute `bower install`
+4. Then execute `amber serve`
+5. Point your web browser to `localhost:4000`.
 
 Application structure
 ---------------------
@@ -51,7 +51,7 @@ The following changes were done to upgrade it to Amber version 0.12.4
 
 1. Create a new repository and initialize it with `amber init`.
    Use `'Examples-ToDo'` as the package name.
-2. Port the `TodoList.st` file and the CSS rules in `index.html`. 
+2. Port the `TodoList.st` file and the CSS rules of [`index.html`](https://github.com/rbistolfi/Amber-Todo/blob/master/index.html) of R. Bistolfis version. 
    In version 0.9.1 [`TodoList.st`](https://github.com/rbistolfi/Amber-Todo/blob/master/st/TodoList.st) is in the same folder as the core classes. 
    In 0.12.4 the ToDo List app is in a separate folder `src` and all the rest of Amber
    is in a subdirectory called `bower_components`.  This subdirectory is populated by the
