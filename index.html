@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Amber Smalltalk Examples -- ToDo List</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Rodrigo Bistolfi">
+    <!-- https://github.com/rbistolfi/Amber-Todo/blob/master/st/TodoList.st 
+         and CSS code below
+         6th Jan 2012
+    -->
+    <meta name="author" content="Hannes Hirzel" />
+    <!-- Update to version Amber version 0.12.4 
+    -->
+        <style>
+            body { margin: 20px auto; width: 500px; font-size: 13px; font-family: sans }
+            .done { text-decoration:line-through; }
+            div#form input { width: 100%; color: #FF6666; font-size: 34px; border: 1px
+                solid #00FF00; padding: 4px }
+            div#todos ol li { font-size: 21px; color: #999999; padding: 10px 0 }
+            div#amber { position: fixed; bottom: 0px; }
+            div#footer { position fixed; bottom: 20px; color: #CCCCCC }
+            h1 { font-size: 55px; color: #FF3333; font-weight: normal; }
+            span+span { color: #FF6666; font-size: 12px; vertical-align:
+                super; cursor: pointer }
+        </style>
+
+    <script type='text/javascript' src='bower_components/amber/support/requirejs/require.min.js'></script>
+    <script type='text/javascript' src='bower_components/amber/support/amber.js'></script>
+  </head>
+
+  <body>
+    <script type='text/javascript'>
+      require.config({ paths: {
+          'Examples': 'src' //mapping compiled .js files and smalltalk source files
+      }});
+      require([
+          'amber/devel',
+          'Examples/Examples-ToDo'
+      ], function (smalltalk) {
+          //used for all new packages in IDE
+          smalltalk.initialize({
+            'transport.defaultAmdNamespace': "Examples"
+          });
+
+          smalltalk.globals.TodoList._run();
+      });
+    </script>
+    <button onclick="require('amber/helpers').globals.Browser._open()">legacy IDE</button>
+    <button onclick="require('amber/helpers').popupHelios()">Helios IDE</button>
+  </body>
+
+</html>

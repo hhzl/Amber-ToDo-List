@@ -1,0 +1,23 @@
+{
+    "name": "AmberToDoList",
+    "description": "An example application for Amber Smalltalk",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "hhzl",
+            "email": "hannes.hirzel@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/hhzl/Amber-ToDo-List",
+    "keywords": [
+        "Amber",
+        "Smalltalk"
+    ],
+    "license": [
+        "MIT"
+    ],
+    "private": false,
+    "dependencies": {
+        "amber": "~>= 0.12.4"
+    }
+}
