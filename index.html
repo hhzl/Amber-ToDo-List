@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 
+    <!-- Simple Amber ToDo List application.
+         The items are stored off-line in the localStorage of your browser.
+    -->
+
+
   <head>
     <title>Amber Smalltalk Examples -- ToDo List</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -25,14 +30,22 @@
                 super; cursor: pointer }
         </style>
 
-    <script type='text/javascript' src='bower_components/amber/support/requirejs/require.min.js'></script>
-    <script type='text/javascript' src='bower_components/amber/support/amber.js'></script>
+     <!-- take Amber files from the Ludus github repository to avoid duplication in this repository.
+          The Ludus repository has been loaded with Amber version 0.12.4 beginning of May 2014
+          To check the version yourself evaluate
+                Smalltalk version
+          in a workspace
+     -->
+     <script type='text/javascript' src='http://bromagosa.github.io/Ludus/bower_components/amber/support/requirejs/require.min.js'></script>
+     <script type='text/javascript' src='http://bromagosa.github.io/Ludus/bower_components/amber/support/amber.js'></script>
+
+
   </head>
 
   <body>
     <script type='text/javascript'>
       require.config({ paths: {
-          'Examples': 'src' //mapping compiled .js files and smalltalk source files
+          'Examples': 'src-todo' //mapping compiled .js files and smalltalk source files
       }});
       require([
           'amber/devel',
