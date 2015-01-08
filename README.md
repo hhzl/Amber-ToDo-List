@@ -9,7 +9,7 @@ It has been updated for Amber version > 0.12.4 by Hannes Hirzel.
 Prerequisites
 -------------
 
-- You have installed command line [Amber Smalltalk](http://docs.amber-lang.net/overview/installing.html) 
+- You have installed command line [Amber Smalltalk](http://docs.amber-lang.net/installing-amber.html) 
   (amber-cli)
 - Follow the instructions to install the `bower` package manager on the same 
   [instructions page](http://docs.amber-lang.net/overview/installing.html).
