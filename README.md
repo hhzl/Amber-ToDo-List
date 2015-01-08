@@ -12,7 +12,7 @@ Prerequisites
 - You have installed command line [Amber Smalltalk](http://docs.amber-lang.net/installing-amber.html) 
   (amber-cli)
 - Follow the instructions to install the `bower` package manager on the same 
-  [instructions page](http://docs.amber-lang.net/overview/installing.html).
+  [instructions page](http://docs.amber-lang.net/installing-amber.html).
     
 
 The tools
