@@ -3,33 +3,53 @@ Amber-ToDo-List
 
 This is a ToDo List Application in Amber Smalltalk.
 It was created by [Rodrigo Bistolfi](https://github.com/rbistolfi/Amber-Todo) and others for Amber version 0.9.1.
-It has been updated for Amber version > 0.12.4 by Hannes Hirzel.
+It has been updated for Amber version 0.14.1 by Hannes Hirzel.
 
 
-Prerequisites
--------------
+This project is an [Amber Smalltalk](http://amber-lang.net/)  example. 
 
-- You have installed command line [Amber Smalltalk](http://docs.amber-lang.net/installing-amber.html) 
-  (amber-cli)
-- Follow the instructions to install the `bower` package manager on the same 
-  [instructions page](http://docs.amber-lang.net/installing-amber.html).
+
+Tools needed
+------------
+
+1. A web browser with reasonably good support for HTML5 canvas.
+2. git, on Windows [Git for Windows](msysgit.github.io)
+3. [nodejs](http://www.nodejs.org/). This will give you the node package manager `npm` as well.
+4. A global install of the [`amber-cli`](http://amber-lang.net/) [npm](http://npmjs.org/) package
+5. A global install of the [`bower`](http://bower.io/) client side package manager in order to install the dependencies
+6. A global install of the [`grunt-cli`](http://gruntjs.com/) task runner which is used as the command line build system 
+
+The `amber`, `bower` and `grunt-cli` packages can be installed with the following command:
+
+    npm install --global amber-cli bower grunt-cli
+
+or as short form:
+
+    npm i -g amber-cli bower grunt-cli
     
 
-The tools
----------
+Reference: http://docs.amber-lang.net/js-glossary.html
 
+
+## Getting Started
+
+Bring the project alive (for example after `git clone`) with:
+
+```sh
+npm install
+bower install
+grunt devel
+```
+
+Developing the project (after brought alive):
+ 
+Start server with `amber serve` and go to `http://localhost:4000/` in your browser and follow the instructions
+    
+- `npm install` installs components into node_modules; used for recompiling with ``grunt``
+   on the command line.
 - `bower` is used to install the web components of Amber
 - `amber` is used to run a small local web server 
 
-
-Instructions
-------------
-
-1. Download and upzip or fork and clone this repository.
-2. Open the directory where `index.html` and `README.md` are located.
-3. Open a terminal window and execute `bower install`
-4. Then execute `amber serve`
-5. Point your web browser to `localhost:4000`.
 
 Application structure
 ---------------------
@@ -42,25 +62,6 @@ The application has three classes
   solution might be used later. 
   Every change in the ToDo List is stored immediately)
 
-
-Log of upgrade activities 
--------------------------
-
-The ToDo list application by Rodrigo Bistolfi works with Amber version 0.9.1. 
-The following changes were done to upgrade it to Amber version 0.12.4
-
-1. Create a new repository and initialize it with `amber init`.
-   Use `'Examples-ToDo'` as the package name.
-2. Port the `TodoList.st` file and the CSS rules of [`index.html`](https://github.com/rbistolfi/Amber-Todo/blob/master/index.html) of R. Bistolfis version. 
-   In version 0.9.1 [`TodoList.st`](https://github.com/rbistolfi/Amber-Todo/blob/master/st/TodoList.st) is in the same folder as the core classes. 
-   In 0.12.4 the ToDo List app is in a separate folder `src` and all the rest of Amber
-   is in a subdirectory called `bower_components`.  This subdirectory is populated by the
-   `bower install` command. The new solution makes it much easier to maintain the application code.
-3. In a text editor manually replace the package name with `'Examples-ToDo'` in file `TodoList.st`.
-4. File in `TodoList.st` in the Workspace of the first Amber IDE. The second IDE, Helios, does not have
-   this option yet.
-5. In method `ToDoStorage>>getArray` change `smalltalk readJSON:` to `SmalltalkImage current readJSObject:`.
-6. In method `ToDoStorage>>save` change `asJSON` to `asJSONString`.
 
 
 Note
