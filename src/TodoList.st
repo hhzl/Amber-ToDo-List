@@ -1,7 +1,7 @@
-Smalltalk createPackage: 'Examples-ToDo'!
+Smalltalk createPackage: 'TodoList'!
 Widget subclass: #Todo
 	instanceVariableNames: 'isDone text id onTodoChanged onDeleteClicked'
-	package: 'Examples-ToDo'!
+	package: 'TodoList'!
 
 !Todo methodsFor: 'accessing'!
 
@@ -108,7 +108,19 @@ newWithText: aString
 
 Widget subclass: #TodoList
 	instanceVariableNames: 'todos container count'
-	package: 'Examples-ToDo'!
+	package: 'TodoList'!
+
+!TodoList methodsFor: 'action'!
+
+doAmberWith
+	| tag |
+	tag := (HTMLCanvas onJQuery: '#output-list' asJQuery) root.
+	tag with: [ :html | html li with: 'Amber Web #with: added me!!' ]
+!
+
+doJQueryAppend
+	'#output-list' asJQuery append: '<li>jQuery append added me!!</li>'
+! !
 
 !TodoList methodsFor: 'adding/removing'!
 
@@ -159,7 +171,7 @@ renderFooterOn: html
 	html div
 		id: 'footer';
 		class: 'section';
-		with: [ html p with: 'Example Todo application for Amber Smalltalk by rbistolfi' ]
+		with: [ html p with: 'Example Todo application for Amber Smalltalk by rbistolfi and others' ]
 !
 
 renderFormOn: html
@@ -204,15 +216,32 @@ renderTodosOn: html
                                            aTodo renderOn: html ]]]
 ! !
 
+!TodoList methodsFor: 'starting'!
+
+augmentPage
+"
+	'#amber-with' asJQuery click: [ self doAmberWith ].
+	'#jquery-append' asJQuery click: [ self doJQueryAppend ].
+"
+
+	self appendToJQuery: 'body' asJQuery
+! !
+
 !TodoList class methodsFor: 'not yet classified'!
 
 run
 	self new appendToJQuery: 'body' asJQuery
 ! !
 
+!TodoList class methodsFor: 'starting'!
+
+start
+	self new augmentPage
+! !
+
 Object subclass: #TodoStorage
 	instanceVariableNames: 'storage array'
-	package: 'Examples-ToDo'!
+	package: 'TodoList'!
 
 !TodoStorage methodsFor: 'accessing'!
 
@@ -228,9 +257,9 @@ at: anIndex put: anObject
 getArray
 	| anArray aJSONArray |
 	aJSONArray := storage getItem: 'TodoList'.
-	anArray := aJSONArray ifNil: [ self initializeStorage ] 
-	                      ifNotNil: [ SmalltalkImage current 
-						                readJSObject: (JSON parse: aJSONArray)
+	anArray := (aJSONArray isNil or: [aJSONArray = '']) ifTrue: [ self initializeStorage ] 
+	                      ifFalse: [ Smalltalk  
+						                readJSObject: (window JSON parse: aJSONArray)
                                     ].
 	^ anArray collect: [ :each | Todo fromDictionary: each ]
 !
@@ -268,7 +297,7 @@ remove: anObject
 !TodoStorage methodsFor: 'initializing'!
 
 initialize
-	storage := localStorage.
+	storage := window localStorage.
 	array := self getArray.
 !
 

@@ -2,17 +2,10 @@
 <html>
 
   <head>
-    <title>Amber Smalltalk Examples -- ToDo List</title>
+    <title>Amber Smalltalk ToDo List Application</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Rodrigo Bistolfi">
-    <!-- https://github.com/rbistolfi/Amber-Todo/blob/master/st/TodoList.st 
-         and CSS code below
-         6th Jan 2012
-    -->
-    <meta name="author" content="Hannes Hirzel" />
-    <!-- Update to version Amber version 0.12.4 
-    -->
-        <style>
+    <meta name="author" content="hhzl" />
+    <style>
             body { margin: 20px auto; width: 500px; font-size: 13px; font-family: sans }
             .done { text-decoration:line-through; }
             div#form input { width: 100%; color: #FF6666; font-size: 34px; border: 1px
@@ -24,30 +17,25 @@
             span+span { color: #FF6666; font-size: 12px; vertical-align:
                 super; cursor: pointer }
         </style>
-
-    <script type='text/javascript' src='bower_components/amber/support/requirejs/require.min.js'></script>
-    <script type='text/javascript' src='bower_components/amber/support/amber.js'></script>
+    <script type='text/javascript' src='the.js'></script>
   </head>
 
   <body>
-    <script type='text/javascript'>
-      require.config({ paths: {
-          'Examples': 'src' //mapping compiled .js files and smalltalk source files
-      }});
-      require([
-          'amber/devel',
-          'Examples/Examples-ToDo'
-      ], function (smalltalk) {
-          //used for all new packages in IDE
-          smalltalk.initialize({
-            'transport.defaultAmdNamespace': "Examples"
+  <!-- 
+  <button id="amber-with">Hello from TagBrush >> with:</button>
+  <button id="jquery-append">Hello from jQuery append</button>
+  -->
+  <ol id="output-list"></ol>
+  <script type='text/javascript'>
+      require(['app'], function (amber) {
+          amber.initialize({
+            //used for all new packages in IDE
+            'transport.defaultAmdNamespace': "examples-todo"
           });
-
-          smalltalk.globals.TodoList._run();
+          require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });
+          amber.globals.TodoList._start();
       });
-    </script>
-    <button onclick="require('amber/helpers').globals.Browser._open()">legacy IDE</button>
-    <button onclick="require('amber/helpers').popupHelios()">Helios IDE</button>
+  </script>
   </body>
 
 </html>
